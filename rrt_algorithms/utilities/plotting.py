@@ -176,5 +176,7 @@ class Plot(object):
         """
         Render the plot to a file
         """
-        go.Figure(self.fig).show()
-        # py.offline.plot(self.fig, filename=self.filename, auto_open=auto_open)
+        fig = go.Figure(self.fig)
+        py.io.write_html(fig, file=self.filename)
+        if auto_open:
+            fig.show()
